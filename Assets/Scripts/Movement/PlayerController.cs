@@ -5,10 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     #region Var's
-    [SerializeField] float moveSpeed = 0.5f;  // Player Movement Speed
-    [SerializeField] float rotateSpeed = 5f; // Camera Rotation Speed
+    private float moveSpeed = 0.0f;
+    [SerializeField] float moveSpeedWalking = 2f;   // Player Walking Speed
+    [SerializeField] float moveSpeedRunning = 4f;   // Player Running Speed
+    [SerializeField] float rotateSpeed = 2.5f;        // Camera Rotation Speed
 
-    public float CameraFOV = 75.0f;  // Camera Field of View
+    public float CameraFOV = 75.0f;                 // Camera Field of View
     #endregion
 
     void Update()
@@ -16,36 +18,63 @@ public class PlayerController : MonoBehaviour {
 
         // Sprint
         #region Sprint   
-        
+
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            // higher move speed while running
-            moveSpeed = 20f;
+            
+            if (Input.GetAxis("Horizontal") != 0 || (Input.GetAxis("Vertical") != 0))
+            {
+                // higher move speed while running
+                moveSpeed = moveSpeedRunning;
 
-            // Highers the Camera Field of view while sprinting
-            if (CameraFOV < 75f)
-            {
-                CameraFOV *= 1.01f; // Smooth transition
-            }
-            if (CameraFOV >= 75)
-            {
+
+                 // Highers the Camera Field of view while sprinting
+                if (CameraFOV < 75f)
+                {
+                 CameraFOV *= 1.01f; // Smooth transition
+                }
+
+                if (CameraFOV >= 75)
+                {
                 CameraFOV = 75;
+                }
             }
-        }
-        if (!Input.GetKey(KeyCode.LeftShift))
-        {
-            // normal move speed
-            moveSpeed = 10f;
+
+            if (Input.GetAxis("Horizontal") == 0 && (Input.GetAxis("Vertical") == 0))
+            {
+
+                // normal move speed
+                moveSpeed = moveSpeedWalking;
 
             // Lowers the Camera FOV back to normal when not sprinting
             if (CameraFOV > 60f)
             {
                 CameraFOV *= 0.99f; // Smooth transition
             }
+
             if (CameraFOV <= 60)
             {
                 CameraFOV = 60;
             }
+            }
+        }
+
+        if (!Input.GetKey(KeyCode.LeftShift))
+        {
+            // normal move speed
+            moveSpeed = moveSpeedWalking;
+
+            // Lowers the Camera FOV back to normal when not sprinting
+            if (CameraFOV > 60f)
+            {
+                CameraFOV *= 0.99f; // Smooth transition
+            }
+
+            if (CameraFOV <= 60)
+            {
+                CameraFOV = 60;
+            }
+
         }
 
         Camera.main.fieldOfView = CameraFOV;
