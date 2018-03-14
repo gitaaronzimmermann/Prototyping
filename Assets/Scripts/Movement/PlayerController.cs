@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     #region Var's
-    public float moveSpeed = 10f;  // Player Movement Speed
-    public float rotateSpeed = 100f; // Camera Rotation Speed
+    [SerializeField] float moveSpeed = 0.5f;  // Player Movement Speed
+    [SerializeField] float rotateSpeed = 5f; // Camera Rotation Speed
 
     public float CameraFOV = 75.0f;  // Camera Field of View
     #endregion
