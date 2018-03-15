@@ -8,15 +8,15 @@ public class InteractionScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
             RaycastHit hit;
 
             if (Physics.Raycast(ray.origin, ray.direction, out hit, Mathf.Infinity))
             {
-                DoorInteraction obj = hit.collider.GetComponent<DoorInteraction>();
-                if (obj)
+                DoorInteraction doorObject = hit.collider.GetComponent<DoorInteraction>();
+                if (doorObject)
                 {
-                    obj.TriggerInteraction();
+                    doorObject.Toggle();
                 }
             }
         }

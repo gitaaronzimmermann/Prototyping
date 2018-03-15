@@ -2,39 +2,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorInteraction : MonoBehaviour {
+public class DoorInteraction : MonoBehaviour
+{
 
-    public enum eDoorState
+    private bool isDoorOpen = false;
+
+    [SerializeField] float closedDoor = 1f;
+    [SerializeField] float openDoor   = 90f;
+    float doorRotation;
+
+    
+    public void Toggle()
     {
-        Active,     // Open
-        Inactive,   // Close
+       isDoorOpen = !isDoorOpen;                // Check if door is open
     }
-
-    private eDoorState door_state;
-
-    void Start()
+    
+    private void Update()
     {
-        door_state = eDoorState.Inactive;
-    }
-
-    public void TriggerInteraction()
-    {
-        if (!GetComponent<Animation>().isPlaying)
+        if (isDoorOpen)
         {
-            Debug.Log("Interactive object");
-            switch (door_state)
+            if (doorRotation < openDoor)
             {
-                case eDoorState.Active:
-                    GetComponent<Animation>().Play("DoorClose");
-                    door_state = eDoorState.Inactive;
-                    break;
-                case eDoorState.Inactive:
-                    GetComponent<Animation>().Play("DoorOpen");
-                    door_state = eDoorState.Active;
-                    break;
-                default:
-                    break;
+                doorRotation *= 1.05f;          // Smooth open
+            }
+
+            if (doorRotation >= openDoor)
+            {
+                doorRotation = openDoor;
             }
         }
+
+        if (!isDoorOpen)
+        {
+            if (doorRotation > closedDoor)
+            {
+                doorRotation *= 0.95f;          // Smooth Close
+            }
+
+            if (doorRotation <= closedDoor)
+            {
+                doorRotation = closedDoor;
+            }
+        }
+
+        transform.rotation = Quaternion.Euler(0f, doorRotation, 0f);
     }
+
+
 }
