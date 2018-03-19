@@ -22,22 +22,16 @@ public class HighlightObject : MonoBehaviour
 
     void Update()
     {
-
         RaycastHit hitInfo;
         Renderer currRenderer;
-
-        Debug.DrawRay(this.transform.position, this.transform.forward * distanceToSee, Color.magenta);
-
+        
         // highlights gameObject if its a collectible and in range of raycast
         if (Physics.Raycast(this.transform.position, this.transform.forward, out hitInfo, distanceToSee) && hitInfo.transform.tag == "collectible")
-        {
-            // Debug.Log(hitInfo.collider.tag);
+        {            
             currRenderer = hitInfo.collider.gameObject.GetComponent<Renderer>();
-
 
             if (currRenderer == renderer)
                 return;
-
 
             if (currRenderer && currRenderer != renderer)
             {
@@ -67,6 +61,5 @@ public class HighlightObject : MonoBehaviour
                 renderer = null;
             }
         }
-
     }
 }
