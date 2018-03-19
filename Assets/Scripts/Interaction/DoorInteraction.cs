@@ -14,7 +14,7 @@ public class DoorInteraction : MonoBehaviour
     
     public void Toggle()
     {
-       isDoorOpen = !isDoorOpen;                // Check if door is open
+       isDoorOpen = !isDoorOpen;                // Change status
     }
     
     private void Update()

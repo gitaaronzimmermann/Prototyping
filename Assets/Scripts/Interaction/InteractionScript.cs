@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class InteractionScript : MonoBehaviour
 {
+
+    [SerializeField] float interactionRadius = 5.0f;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -11,13 +14,21 @@ public class InteractionScript : MonoBehaviour
             Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
             RaycastHit hit;
 
-            if (Physics.Raycast(ray.origin, ray.direction, out hit, Mathf.Infinity))
+            if (Physics.Raycast(ray.origin, ray.direction, out hit, interactionRadius))
             {
                 DoorInteraction doorObject = hit.collider.GetComponent<DoorInteraction>();
                 if (doorObject)
                 {
                     doorObject.Toggle();
                 }
+
+                FileCabinetScript fileCabinet = hit.collider.GetComponent<FileCabinetScript>();
+                if (fileCabinet)
+                {
+                    fileCabinet.ToggleDrawer();
+                }
+
+
             }
         }
     }

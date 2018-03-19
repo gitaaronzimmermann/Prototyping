@@ -183,9 +183,6 @@ public class PlayerController : MonoBehaviour
                                 + transform.right * xInputTranslate * moveSpeed * Time.deltaTime;
 
         // Rotation Looking
-
-
-
         xRotation -= Input.GetAxis("Mouse Y") * lookSensitivity;
         yRotation += Input.GetAxis("Mouse X") * lookSensitivity;
 
