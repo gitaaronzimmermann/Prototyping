@@ -10,29 +10,24 @@ public class PlayerController : MonoBehaviour
     // Moving
     private float moveSpeed = 0.0f;
     [SerializeField] float moveSpeedCrouching = 2f;   // Player Crouching Speed
-    [SerializeField] float moveSpeedWalking = 3f;   // Player Walking Speed
-    [SerializeField] float moveSpeedRunning = 4f;   // Player Running Speed
-    [SerializeField] float rotateSpeed = 2.5f; // Camera Rotation Speed
+    [SerializeField] float moveSpeedWalking   = 3f;   // Player Walking Speed
+    [SerializeField] float moveSpeedRunning   = 4f;   // Player Running Speed
+    [SerializeField] float rotateSpeed        = 2.5f; // Camera Rotation Speed
 
     // Crouching/Running
     private bool crouching = false;                    // Is player crouching? = True
-    private bool running = false;                    // Is player running? = True
+    private bool running   = false;                    // Is player running? = True
 
     // Running FOV
-    private float CameraFOV = 75.0f;                    // Camera Field of View
+    private float CameraFOV     = 75.0f;                // Camera Field of View
     private float CameraYNormal = -0.5f;                // Camera Height while standing
     private float CameraYCrouch = -1.0f;                // Camera Height while crouching
     private float CameraY;
 
     // Player Look
-    public float lookSensitivity = 5f;
-    public float xRotation;
-    public float yRotation;
-    public float currentXRotation;
-    public float currentYRotation;
-    public float xRotaionV;
-    public float yRotationV;
-    public float lookSmothDamp = 0.1f;
+    [SerializeField] float lookSensitivity = 5f;
+    private float xRotation;
+    private float yRotation; 
 
 
 
