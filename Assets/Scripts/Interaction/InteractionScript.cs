@@ -16,12 +16,14 @@ public class InteractionScript : MonoBehaviour
 
             if (Physics.Raycast(ray.origin, ray.direction, out hit, interactionRadius))
             {
+                // Door 
                 DoorInteraction doorObject = hit.collider.GetComponent<DoorInteraction>();
                 if (doorObject)
                 {
                     doorObject.Toggle();
                 }
 
+                // Filecabinet
                 FileCabinetScript fileCabinet = hit.collider.GetComponent<FileCabinetScript>();
                 if (fileCabinet)
                 {
