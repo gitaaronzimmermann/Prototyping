@@ -2,26 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
     #region Var's
 
+    // Moving
     private float moveSpeed = 0.0f;
-    [SerializeField] float moveSpeedCrouching   = 2f;   // Player Crouching Speed
-    [SerializeField] float moveSpeedWalking     = 3f;   // Player Walking Speed
-    [SerializeField] float moveSpeedRunning     = 4f;   // Player Running Speed
-    [SerializeField] float rotateSpeed          = 2.5f; // Camera Rotation Speed
+    [SerializeField] float moveSpeedCrouching = 2f;   // Player Crouching Speed
+    [SerializeField] float moveSpeedWalking = 3f;   // Player Walking Speed
+    [SerializeField] float moveSpeedRunning = 4f;   // Player Running Speed
+    [SerializeField] float rotateSpeed = 2.5f; // Camera Rotation Speed
 
-    private bool crouching  = false;                    // Is player crouching? = True
-    private bool running    = false;                    // Is player running? = True
+    // Crouching/Running
+    private bool crouching = false;                    // Is player crouching? = True
+    private bool running = false;                    // Is player running? = True
 
+    // Running FOV
     private float CameraFOV = 75.0f;                    // Camera Field of View
     private float CameraYNormal = -0.5f;                // Camera Height while standing
     private float CameraYCrouch = -1.0f;                // Camera Height while crouching
     private float CameraY;
 
+    // Player Look
+    public float lookSensitivity = 5f;
+    public float xRotation;
+    public float yRotation;
+    public float currentXRotation;
+    public float currentYRotation;
+    public float xRotaionV;
+    public float yRotationV;
+    public float lookSmothDamp = 0.1f;
+
+
+
     #endregion
-     
+
     void Update()
     {
 
@@ -98,7 +114,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         Camera.main.fieldOfView = CameraFOV;
-            
+
 
         #endregion
 
@@ -166,9 +182,16 @@ public class PlayerController : MonoBehaviour {
         transform.localPosition += transform.forward * zInputTranslate * moveSpeed * Time.deltaTime
                                 + transform.right * xInputTranslate * moveSpeed * Time.deltaTime;
 
-        // Rotation
-        transform.Rotate(0.0f, xMouseInput, 0.0f);
+        // Rotation Looking
 
+
+
+        xRotation -= Input.GetAxis("Mouse Y") * lookSensitivity;
+        yRotation += Input.GetAxis("Mouse X") * lookSensitivity;
+
+        xRotation = Mathf.Clamp(xRotation, -45, 45);
+
+        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         #endregion
 
     }
