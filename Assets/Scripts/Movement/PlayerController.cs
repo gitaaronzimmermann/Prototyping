@@ -27,7 +27,9 @@ public class PlayerController : MonoBehaviour
     // Player Look
     [SerializeField] float lookSensitivity = 5f;
     private float xRotation;
-    private float yRotation; 
+    private float yRotation;
+    [SerializeField] float maxLookUp = 45.0f;
+    [SerializeField] float maxLookDown = -75.0f;
 
 
 
@@ -181,7 +183,7 @@ public class PlayerController : MonoBehaviour
         xRotation -= Input.GetAxis("Mouse Y") * lookSensitivity;
         yRotation += Input.GetAxis("Mouse X") * lookSensitivity;
 
-        xRotation = Mathf.Clamp(xRotation, -45, 45);
+        xRotation = Mathf.Clamp(xRotation, maxLookDown, maxLookUp);
 
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         #endregion
