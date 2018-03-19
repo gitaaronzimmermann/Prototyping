@@ -24,9 +24,11 @@ public class HighlightObject : MonoBehaviour
     {
         RaycastHit hitInfo;
         Renderer currRenderer;
-        
+
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+
         // highlights gameObject if its a collectible and in range of raycast
-        if (Physics.Raycast(this.transform.position, this.transform.forward, out hitInfo, distanceToSee) && hitInfo.transform.tag == "collectible")
+        if (Physics.Raycast(ray.origin, ray.direction, out hitInfo, distanceToSee) && hitInfo.transform.tag == "collectible")
         {            
             currRenderer = hitInfo.collider.gameObject.GetComponent<Renderer>();
 
