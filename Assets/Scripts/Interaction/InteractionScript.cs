@@ -28,6 +28,11 @@ public class InteractionScript : MonoBehaviour
                     fileCabinet.ToggleDrawer();
                 }
 
+                DrawerInteraction drawerObject = hit.collider.GetComponent<DrawerInteraction>();
+                if (drawerObject)
+                {
+                    drawerObject.ToggleDrawer();
+                }
 
             }
         }

@@ -4,27 +4,6 @@ using UnityEngine;
 
 public class HighlightObject : MonoBehaviour
 {
-
-    /*
-   
-        
-
-          public Renderer rend;
-    private void Start()
-    {
-        rend = GetComponent<Renderer>();
-        rend.material.shader = Shader.Find("Outline");
-    }
-
-    private void Update()
-    {
-
-        rend.material.SetFloat("Outline width", 0.03f);
-    }
-     
-      */
-
-
     #region Var's
     public float distanceToSee;
     public string ObjectName;
@@ -42,8 +21,7 @@ public class HighlightObject : MonoBehaviour
     {
         rend = GetComponent<Renderer>();
         rend.material.shader = Shader.Find("Outlined/Silhouette Only");
-                    rend.material.SetFloat("_width", 0.03f);
-        
+                    rend.material.SetFloat("_width", 0.03f);        
     }
 
 

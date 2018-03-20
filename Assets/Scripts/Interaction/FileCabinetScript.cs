@@ -14,7 +14,6 @@ public class FileCabinetScript : MonoBehaviour {
     private float closedDrawer;
     private float openDrawer;
     [SerializeField] float openRange = 0.52f;
-
 #endregion
 
     private void Awake()
@@ -27,7 +26,7 @@ public class FileCabinetScript : MonoBehaviour {
         closedDrawer = transform.position.z;                 // Defining closed drawer position
         openDrawer   = transform.position.z - openRange;     // Defining open drawer position           
     }
-
+    
     /// <summary>
     /// Toggles drawer state
     /// </summary>
@@ -43,7 +42,7 @@ public class FileCabinetScript : MonoBehaviour {
     private void Update ()
     {
         if (isDrawerOpen)
-        {
+        {            
             if (drawerZ > openDrawer)
             {
                 drawerZ *= 0.99f;           // Open smooth
@@ -53,10 +52,11 @@ public class FileCabinetScript : MonoBehaviour {
             {
                 drawerZ = openDrawer;
             }
+            
         }
 
         if (!isDrawerOpen)
-        {
+        {            
             if (drawerZ < closedDrawer)
             {
                 drawerZ *= 1.01f;           // Close smooth
@@ -65,7 +65,7 @@ public class FileCabinetScript : MonoBehaviour {
             if (drawerZ >= closedDrawer)
             {
                 drawerZ = closedDrawer;
-            }
+            }           
         }
 
         transform.position = new Vector3(drawerX, drawerY, drawerZ);
