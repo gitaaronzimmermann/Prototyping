@@ -32,7 +32,7 @@ public class InteractionScript : MonoBehaviour
                 if (drawerObject)
                 {
                     drawerObject.ToggleDrawer();
-                }
+                }                
 
             }
         }
