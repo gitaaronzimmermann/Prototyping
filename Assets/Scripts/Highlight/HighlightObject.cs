@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+           using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class HighlightObject : MonoBehaviour
     private Color highlightColor;
     Material originalMaterial, tempMaterial;
     Renderer renderer = null;
+    int key = 0;
 
     #endregion
 
@@ -30,6 +32,14 @@ public class HighlightObject : MonoBehaviour
         // highlights gameObject if its a collectible and in range of raycast
         if (Physics.Raycast(ray.origin, ray.direction, out hitInfo, distanceToSee) && hitInfo.transform.tag == "collectible")
         {
+
+            // collect object and delete it from scene, adding +1 to inventory
+            if (Input.GetKey(KeyCode.E))
+            {
+                key += 1;
+                Debug.Log(key);
+                Destroy(hitInfo.collider.gameObject);
+            }
             currRenderer = hitInfo.collider.gameObject.GetComponent<Renderer>();
 
             if (currRenderer == renderer)
