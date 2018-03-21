@@ -32,7 +32,13 @@ public class InteractionScript : MonoBehaviour
                 if (drawerObject)
                 {
                     drawerObject.ToggleDrawer();
-                }                
+                }
+
+                DrawerInteractionHenry drawerObjectHenry = hit.collider.GetComponent<DrawerInteractionHenry>();
+                if (drawerObjectHenry)
+                {
+                    drawerObjectHenry.ToggleDrawer();
+                }
 
             }
         }
