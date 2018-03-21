@@ -5,10 +5,16 @@ using UnityEngine;
 public class InteractionScript : MonoBehaviour
 {
 
+
+    public bool safeKey = false;
+
+
     [SerializeField] float interactionRadius = 5.0f;
 
     void Update()
     {
+        Debug.Log(safeKey);
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
@@ -33,6 +39,15 @@ public class InteractionScript : MonoBehaviour
                 {
                     drawerObject.ToggleDrawer();
                 }
+
+                
+                UI_Key keyObject = hit.collider.GetComponent<UI_Key>();
+                if (keyObject)
+                {
+                    safeKey = true;
+                }
+
+
 
             }
         }

@@ -17,7 +17,7 @@ public class UI_Zettel : MonoBehaviour {
     	
 	void Update ()
     {
-        countText.text = (zettelCount + " / " + maxZettel);
+        countText.text = (zettelCount + " / " + maxZettel).ToString();
 	}
 
     /// <summary>

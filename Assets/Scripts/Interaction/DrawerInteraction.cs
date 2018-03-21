@@ -9,7 +9,7 @@ public class DrawerInteraction : MonoBehaviour
     Rigidbody myRigidbody;
     [SerializeField] float speed = 10f;
     [SerializeField] float openLength = 1f;
-
+    
     private void Start()
     {
         myRigidbody = GetComponent<Rigidbody>();        
