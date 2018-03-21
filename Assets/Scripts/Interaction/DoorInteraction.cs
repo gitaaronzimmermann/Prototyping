@@ -7,11 +7,19 @@ public class DoorInteraction : MonoBehaviour
 
     private bool isDoorOpen = false;
 
-    [SerializeField] float closedDoor = 1f;
-    [SerializeField] float openDoor   = 90f;
+    private float closedDoor;
+    private float openDoor;
+
+    [SerializeField] float doorAngel = 90f;
+
     float doorRotation;
 
-    
+    private void Awake()
+    {
+        closedDoor = transform.rotation.x;
+        openDoor = closedDoor - doorAngel;
+    }
+
     public void Toggle()
     {
        isDoorOpen = !isDoorOpen;                // Change status
