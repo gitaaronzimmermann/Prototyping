@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23702775274044794}
   - component: {fileID: 95877355706345450}
   m_Layer: 0
-  m_Name: Publish_Key_0001 1
+  m_Name: "Schl\xFCssel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

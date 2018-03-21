@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4458271697304690}
   - component: {fileID: 95524928346286548}
   m_Layer: 0
-  m_Name: Publish_Desk_0002 1
+  m_Name: Schreibtisch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

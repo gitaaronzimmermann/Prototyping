@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23696989227611748}
   - component: {fileID: 95292324490868712}
   m_Layer: 0
-  m_Name: Blatablage 1
+  m_Name: Blatablage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
