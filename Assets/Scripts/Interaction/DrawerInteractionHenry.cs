@@ -47,7 +47,6 @@ public class DrawerInteractionHenry : MonoBehaviour
                     moving = 0;
                 }
 
-
                 if (toggledOn)
                 {
                     if (stopCounting)
@@ -93,9 +92,6 @@ public class DrawerInteractionHenry : MonoBehaviour
                         }
                     }
                 }
-
-                Debug.LogFormat("MaxRange {0}, Moving {1} ", maxRange, moving);
-
             }
         }
     }
