@@ -10,7 +10,7 @@ public class InteractionScript : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(safeKey);
+        Debug.LogFormat("safeKey interaction{0}", safeKey);
 
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -22,12 +22,17 @@ public class InteractionScript : MonoBehaviour
                 DoorInteraction doorObject = hit.collider.GetComponent<DoorInteraction>();
                 if (doorObject)
                 {
-                    if (doorObject.tag == "safe")
+                    Debug.Log(hit.collider.tag);
+                    if (hit.collider.tag == "safe")
                     {
-                        if (safeKey)
+
+                        if (safeKey == true)
                         {
                             doorObject.Toggle();
-                        }  
+                        }else if(safeKey == false)
+                        {
+                            Debug.Log("no key");
+                        }
                     }
                     if (doorObject.tag != "safe")
                     {
