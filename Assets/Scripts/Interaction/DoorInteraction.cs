@@ -16,13 +16,13 @@ public class DoorInteraction : MonoBehaviour
 
     // Sounds
 
-    [SerializeField] float volume = 0.5f;
-    private bool ongoingSound = false;
+    //[SerializeField] float volume = 0.5f;
+    //private bool ongoingSound = false;
 
-    public AudioClip doorOpen;
-    public AudioClip doorClose;
+    //public AudioClip doorOpen;
+    //public AudioClip doorClose;
 
-    private AudioSource source;
+    //private AudioSource source;
 
 
 
@@ -31,7 +31,7 @@ public class DoorInteraction : MonoBehaviour
         closedDoor = transform.rotation.x;
         openDoor = closedDoor - doorAngel;
 
-        source = GetComponent<AudioSource>();
+        // source = GetComponent<AudioSource>();
     }
 
     public void Toggle()
@@ -43,11 +43,11 @@ public class DoorInteraction : MonoBehaviour
     {
         if (isDoorOpen)
         {
-            if (!ongoingSound)
-            {
-                source.PlayOneShot(doorClose, volume);
-                ongoingSound = true;
-            }
+        //    if (!ongoingSound)
+        //    {
+        //        source.PlayOneShot(doorClose, volume);
+        //        ongoingSound = true;
+        //    }
 
             if (doorRotation < openDoor)
             {
@@ -57,7 +57,7 @@ public class DoorInteraction : MonoBehaviour
             if (doorRotation >= openDoor)
             {
                 doorRotation = openDoor;
-                ongoingSound = false;
+                //ongoingSound = false;
             }
         }
 
