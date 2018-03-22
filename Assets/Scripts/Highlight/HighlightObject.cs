@@ -18,6 +18,7 @@ public class HighlightObject : MonoBehaviour
     Light light;
     public GameObject l;
     UI_Key trash;
+
     bool keyForSafe = false;
 
     #endregion
@@ -121,4 +122,10 @@ public class HighlightObject : MonoBehaviour
             }
         }
     }
+
+    public bool GetKeyBool()
+    {
+        return keyForSafe;
+    }
+
 }

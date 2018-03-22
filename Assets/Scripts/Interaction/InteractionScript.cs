@@ -3,17 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InteractionScript : MonoBehaviour
-{
-
-
+{    
     public bool safeKey = false;
-
 
     [SerializeField] float interactionRadius = 5.0f;
 
     void Update()
     {
-        Debug.Log(safeKey);
+        Debug.LogFormat("safeKey interaction{0}", safeKey);
 
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -25,29 +22,50 @@ public class InteractionScript : MonoBehaviour
                 DoorInteraction doorObject = hit.collider.GetComponent<DoorInteraction>();
                 if (doorObject)
                 {
-                    doorObject.Toggle();
+                    Debug.Log(hit.collider.tag);
+                    if (hit.collider.tag == "safe")
+                    {
+
+                        if (safeKey == true)
+                        {
+                            doorObject.Toggle();
+                        }else if(safeKey == false)
+                        {
+                            Debug.Log("no key");
+                        }
+                    }
+                    if (doorObject.tag != "safe")
+                    {
+                        doorObject.Toggle();
+                    }                         
                 }
 
+                // File Cabinet Interaction
                 FileCabinetScript fileCabinet = hit.collider.GetComponent<FileCabinetScript>();
                 if (fileCabinet)
                 {
                     fileCabinet.ToggleDrawer();
                 }
 
+                // drawer interaction
                 DrawerInteraction drawerObject = hit.collider.GetComponent<DrawerInteraction>();
                 if (drawerObject)
                 {
                     drawerObject.ToggleDrawer();
                 }
 
-                
+                // Keyobject interaction
                 UI_Key keyObject = hit.collider.GetComponent<UI_Key>();
                 if (keyObject)
                 {
                     safeKey = true;
                 }
 
-
+                DrawerInteractionHenry drawerObjectHenry = hit.collider.GetComponent<DrawerInteractionHenry>();
+                if (drawerObjectHenry)
+                {
+                    drawerObjectHenry.ToggleDrawer();
+                }
 
             }
         }
