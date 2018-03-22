@@ -5,7 +5,7 @@ using UnityEngine;
 public class DoorInteraction : MonoBehaviour
 {
 
-    private bool isDoorOpen = false;
+    [SerializeField] bool isDoorOpen = false;
 
     private float closedDoor;
     private float openDoor;

@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InteractionScript : MonoBehaviour
-{
-
-
+{    
     public bool safeKey = false;
-
 
     [SerializeField] float interactionRadius = 5.0f;
 
@@ -25,22 +22,34 @@ public class InteractionScript : MonoBehaviour
                 DoorInteraction doorObject = hit.collider.GetComponent<DoorInteraction>();
                 if (doorObject)
                 {
-                    doorObject.Toggle();
+                    if (doorObject.tag == "safe")
+                    {
+                        if (safeKey)
+                        {
+                            doorObject.Toggle();
+                        }  
+                    }
+                    if (doorObject.tag != "safe")
+                    {
+                        doorObject.Toggle();
+                    }                         
                 }
 
+                // File Cabinet Interaction
                 FileCabinetScript fileCabinet = hit.collider.GetComponent<FileCabinetScript>();
                 if (fileCabinet)
                 {
                     fileCabinet.ToggleDrawer();
                 }
 
+                // drawer interaction
                 DrawerInteraction drawerObject = hit.collider.GetComponent<DrawerInteraction>();
                 if (drawerObject)
                 {
                     drawerObject.ToggleDrawer();
                 }
 
-                
+                // Keyobject interaction
                 UI_Key keyObject = hit.collider.GetComponent<UI_Key>();
                 if (keyObject)
                 {
