@@ -3,13 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InteractionScript : MonoBehaviour
-{    
+{
+
+    UI_Key key;
+
     public bool safeKey = false;
+
 
     [SerializeField] float interactionRadius = 5.0f;
 
     void Update()
     {
+        key = GetComponent<UI_Key>();
+        if(safeKey == true)
+        {
+            key.keyCount = 1;
+        }
+        Debug.Log(key.keyCount);
         Debug.LogFormat("safeKey interaction{0}", safeKey);
 
         if (Input.GetKeyDown(KeyCode.E))

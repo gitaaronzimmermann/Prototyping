@@ -62,10 +62,7 @@ public class HighlightObject : MonoBehaviour
         // highlights gameObject if its a collectible and in range of raycast
         if (Physics.Raycast(ray.origin, ray.direction, out hitInfo, distanceToSee))
         {
-            if(keyForSafe == true && hitInfo.transform.tag == "safe")
-            {
-                // open safe
-            }
+            
             if (hitInfo.transform.tag == "collectible" || hitInfo.transform.tag == "key")
             {
                 // collect object and delete it from scene, adding +1 to inventory
