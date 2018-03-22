@@ -47,7 +47,11 @@ public class InteractionScript : MonoBehaviour
                     safeKey = true;
                 }
 
-
+                DrawerInteractionHenry drawerObjectHenry = hit.collider.GetComponent<DrawerInteractionHenry>();
+                if (drawerObjectHenry)
+                {
+                    drawerObjectHenry.ToggleDrawer();
+                }
 
             }
         }
